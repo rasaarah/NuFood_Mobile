@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html> 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>NUFOOD</title>
+  <link rel="shortcut icon" href="img/nf.png" type="image/x-icon"/>
+  <link rel="apple-touch-icon" href="img/nf.png">
+  <link rel="apple-touch-icon-precomposed" href="icon/icon.png">
+  <link href="css/framework7.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/framework7.ios.min.css">
+  <link rel="stylesheet" href="css/my-app.css">
+  <link rel="stylesheet" href="css/template.css">
+  <link rel="stylesheet" href="css/custom.css"> 
+  
+  <!-- ======== T E M P L A T E 7 ======== -->
+  <!-- KARYAWAN-->
+  <script type="text/template7" id="menu_utama_siangTemplate">
+    <div class="page-content">
+      {{#each menu_utama_siang}}
+          <ul class="menu_utama_siang" style="list-style-type: none; padding: 0; margin: 0;" data-harga='{{harga}}' data-id="{{id_makanan}}">
+            <li class="card demo-card-header-pic">
+              <div class="card-content  theme-red">
+                <div class="card-content-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">
+                      <input type="hidden" class="form-control" name="id_user" id="" value="">
+                      <input type="hidden" class="form-control idMakanan" name="id_makanan" id="id_makanan_{{id_makanan}}" value="{{id_makanan}}">
+                      <h2>{{nama_makanan}}</h2>
+                    </div>
+                  </div>
+                  <div class="item-subtitle">
+                    <input type="hidden" class="form-control" id="harga" value="{{harga}}">Rp {{harga}}
+                  </div>
+                  <br>
+                  <div class="item-content">
+                    <div class="item-inner">
+                      <div class="item-input">
+                        <textarea placeholder="Rincian" class="note" name="note" id="note_utama_siang" data-id="{{id_makanan}}" style="border-radius:5px;width:100%;"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <a href="#pilih_alternatif_satu_siang"  data-harga='{{harga}}' class="addPesanan_utama_siang_s">       
+                  <input type="button" id="pesanan_utama_siangTombol" value="Pesan" class="button button-small button-fill item-link" data-id="{{id_makanan}}" style="width: 100%; color:white;"></a>                    
+                </div>
+              </div>
+            </li>
+          </ul>
+      {{/each}}
+    </div>
+  </script>
+
+  <script type="text/template7" id="menu_alt1_siangTemplate">
+    <div class="page-content">
+  
+      {{#each menu_alt1_siang}}
+        <ul class="menu_alternatif_satu_siang" style="list-style-type: none; padding: 0; margin: 0;"  data-harga='{{harga}}' data-id="{{id_makanan}}">
+            <li class="card demo-card-header-pic">
+              <div class="card-content  theme-red">
+                <div class="card-content-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">
+                      <input type="hidden" class="form-control" name="id_user" id="" value="">
+                      <input type="hidden" class="form-control idMakanan" name="id_makanan" id="id_makanan_{{id_makanan}}" value="{{id_makanan}}">
+                      <h2>{{nama_makanan}}</h2>
+                    </div>
+                  </div>
+                  <div class="item-subtitle">
+                    <input type="hidden" class="form-control" id="harga" value="{{harga}}">Rp {{harga}}
+                  </div>
+                  <br>
+                  <div class="item-content">
+                    <div class="item-inner">
+                      <div class="item-input">
+                        <textarea placeholder="Rincian" class="note" name="note" id="note_utama_siang" data-id="{{id_makanan}}" style="border-radius:5px;width:100%;"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <a href="#pilih_alternatif_dua_siang"  data-harga='{{harga}}' class="addPesanan_alternatif_satu_siang_s">       
+                  <input type="button" id="addPesanan_alternatif_satu_siang" value="Pesan" class="button button-small button-fill item-link" data-id="{{id_makanan}}" style="width: 100%; color:white;"></a>
+                                          
+                </div>
+              </div>
+            </li>
+          </ul>
+      {{/each}}
+ 
+    </div>
+  </script>
+
+  <script type="text/template7" id="menu_alt2_siangTemplate">
+    <div class="page-content">
+   
+      {{#each menu_alt2_siang}}
+        <ul class="menu_alternatif_dua_siang" style="list-style-type: none; padding: 0; margin: 0;" data-id="{{id_makanan}}"  data-harga='{{harga}}' >
+            <li class="card demo-card-header-pic">
+              <div class="card-content  theme-red">
+                <div class="card-content-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">
+                      <input type="hidden" class="form-control" name="id_user" id="" value="">
+                      <input type="hidden" class="form-control idMakanan" name="id_makanan" id="id_makanan_{{id_makanan}}" value="{{id_makanan}}">
+                      <h2>{{nama_makanan}}</h2>
+                    </div>
+                  </div>
+                  <div class="item-subtitle">
+                    <input type="hidden" class="form-control" id="harga" value="{{harga}}">Rp {{harga}}
+                  </div>
+                  <br>
+                  <div class="item-content">
+                    <div class="item-inner">
+                      <div class="item-input">
+                        <textarea placeholder="Rincian" class="note" name="note" id="note_utama_siang" data-id="{{id_makanan}}" style="border-radius:5px;width:100%;"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <a href="#yakin2_siang"  data-harga='{{harga}}' class="addPesanan_alternatif_dua_siang_s">       
+                  <input type="button" id="addPesanan_alternatif_satu_siang" value="Pesan" class="button button-small button-fill item-link" data-id="{{id_makanan}}" style="width: 100%; color:white;"></a>
+                                          
+                </div>
+              </div>
+            </li>
+          </ul>
+
+      {{/each}}
+ 
+    </div>
+  </script>
+  <!--- end Menu siang -->
+
+<!-- ============================== MENU MALAM ==================  -->
+  <script type="text/template7" id="menu_utama_malamTemplate">
+    <div class="page-content">
+      {{#each menu_utama_malam}}
+         <ul class="menu_utama_malam" style="list-style-type: none; padding: 0; margin: 0;" data-id="{{id_makanan}}" data-harga="{{harga}}">
+            <li class="card demo-card-header-pic">
+              <div class="card-content  theme-red">
+                <div class="card-content-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">
+                      <input type="hidden" class="form-control" name="id_user" id="" value="">
+                      <input type="hidden" class="form-control idMakanan" name="id_makanan" id="id_makanan_{{id_makanan}}" value="{{id_makanan}}">
+                      <h2>{{nama_makanan}}</h2>
+                    </div>
+                  </div>
+                  <div class="item-subtitle">
+                    <input type="hidden" class="form-control" id="harga" value="{{harga}}">Rp {{harga}}
+                  </div>
+                  <br>
+                  <div class="item-content">
+                    <div class="item-inner">
+                      <div class="item-input">
+                        <textarea placeholder="Rincian" class="note" name="note" id="note_utama_siang" data-id="{{id_makanan}}" style="border-radius:5px;width:100%;"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <a href="#pilih_alternatif_satu_malam" data-harga='{{harga}}' class="addPesanan_utama_malam_s">       
+                  <input type="button" id="pesanan_utama_malamTombol" value="Pesan" class="button button-small button-fill item-link" data-id="{{id_makanan}}" style="width: 100%; color:white;"></a>                    
+                </div>
+              </div>
+            </li>
+          </ul>
+      {{/each}}
+
+    </div>
+  </script>
+
+  <script type="text/template7" id="menu_alt1_malamTemplate">
+    <div class="page-content">
+    <div class="keep-navbar-on-scroll">
+      {{#each menu_alt1_malam}}
+         <ul class="menu_alt1_malam" style="list-style-type: none; padding: 0; margin: 0;" data-id="{{id_makanan}}" data-harga="{{harga}}">
+            <li class="card demo-card-header-pic">
+              <div class="card-content  theme-red">
+                <div class="card-content-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">
+                      <input type="hidden" class="form-control" name="id_user" id="" value="">
+                      <input type="hidden" class="form-control idMakanan" name="id_makanan" id="id_makanan_{{id_makanan}}" value="{{id_makanan}}">
+                      <h2>{{nama_makanan}}</h2>
+                    </div>
+                  </div>
+                  <div class="item-subtitle">
+                    <input type="hidden" class="form-control" id="harga" value="{{harga}}">Rp {{harga}}
+                  </div>
+                  <br>
+                  <div class="item-content">
+                    <div class="item-inner">
+                      <div class="item-input">
+                        <textarea placeholder="Rincian" class="note" name="note" id="note_utama_siang" data-id="{{id_makanan}}" style="border-radius:5px;width:100%;"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <a href="#pilih_alternatif_dua_malam"  data-harga='{{harga}}' class="addPesanan_alternatif_satu_malem_s">       
+                  <input type="button" id="pesanan_utama_siangTombol" value="Pesan" class="button button-small button-fill item-link" data-id="{{id_makanan}}" style="width: 100%; color:white;"></a>                    
+                </div>
+              </div>
+            </li>
+          </ul>
+      {{/each}}
+    </div>
+    </div>
+  </script>
+
+  <script type="text/template7" id="menu_alt2_malamTemplate">
+    <div class="page-content">
+    <div class="keep-navbar-on-scroll">
+      {{#each menu_alt2_malam}}
+         <ul class="menu_alt2_malam" style="list-style-type: none; padding: 0; margin: 0;" data-id="{{id_makanan}}"  data-harga='{{harga}}'>
+            <li class="card demo-card-header-pic">
+              <div class="card-content  theme-red">
+                <div class="card-content-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">
+                      <input type="hidden" class="form-control" name="id_user" id="" value="">
+                      <input type="hidden" class="form-control idMakanan" name="id_makanan" id="id_makanan_{{id_makanan}}" value="{{id_makanan}}">
+                      <h2>{{nama_makanan}}</h2>
+                    </div>
+                  </div>
+                  <div class="item-subtitle">
+                    <input type="hidden" class="form-control" id="harga" value="{{harga}}">Rp {{harga}}
+                  </div>
+                  <br>
+                  <div class="item-content">
+                    <div class="item-inner">
+                      <div class="item-input">
+                        <textarea placeholder="Rincian" class="note" name="note" id="note_utama_siang" data-id="{{id_makanan}}" style="border-radius:5px;width:100%;"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <a href="#yakin2_malam"  data-harga='{{harga}}' class="addPesanan_alternatif_dua_malam_s">       
+                  <input type="button" id="pesanan_utama_siangTombol" value="Pesan" class="button button-small button-fill item-link" data-id="{{id_makanan}}" style="width: 100%; color:white;"></a>                    
+                </div>
+              </div>
+            </li>
+          </ul>
+      {{/each}}
+    </div>
+    </div>
+  </script>
+<!-- ============================== END MENU MALAM ==================  -->
+
+<!-- ============================== PESANAN ==================  -->
+
+  <script id="pesanan_utama_siangTemplate" type="text/template7">
+    <div class="content-block" style="margin-top:10%;">
+      <div class="list-block">
+        <ul>
+       
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Nama Makanan</div>
+                <div class="item-after">{{nama_makanan}}</div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Note</div>
+                <div class="item-after">{{note}}</div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Harga</div>
+                 <div class="item-after">Rp {{harga}}</div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Status</div>
+                <div class="item-after"> {{status}}</div>
+              </div>
+            </li>
+        </ul>            
+      </div>
+    </div>  
+    <br>           
+  </script>
+
+  <script id="pesanan_alt1_siangTemplate" type="text/template7">
+    <div class="content-block" style="margin-top:10%;">
+      <div class="list-block">
+        <ul>
+         
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Nama Makanan</div>
+                <div class="item-after">{{nama_makanan}}</div>
+              </div>
+            </li>
+           
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Note</div>
+                <div class="item-after">{{note}}</div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Harga</div>
+                <div class="item-after">Rp {{harga}}</div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Status</div>
+                <div class="item-after"> {{status}}</div>
+              </div>
+            </li>
+
+        </ul>            
+      </div>
+    </div>  
+    <br>           
+  </script>
+
+  <script id="pesanan_alt2_siangTemplate" type="text/template7">
+    <div class="content-block" style="margin-top:10%;">
+      <div class="list-block">
+        <ul>
+         
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Nama Makanan</div>
+                <div class="item-after">{{nama_makanan}}</div>
+              </div>
+            </li>
+           
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Note</div>
+                <div class="item-after">{{note}}</div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Harga</div>
+                <div class="item-after">Rp {{harga}}</div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Status</div>
+                <div class="item-after"> {{status}}</div>
+              </div>
+            </li>
+        
+        </ul>            
+      </div>
+    </div>  
+    <br>           
+  </script>
+
+  <script id="pesanan_utama_malamTemplate" type="text/template7">
+    <div class="content-block" style="margin-top:10%;">
+      <div class="list-block">
+        <ul>
+         
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Nama Makanan</div>
+                <div class="item-after">{{nama_makanan}}</div>
+              </div>
+            </li>
+          
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Note</div>
+                <div class="item-after">{{note}}</div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Harga</div>
+                <div class="item-after">Rp {{harga}}</div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Status</div>
+                <div class="item-after"> {{status}}</div>
+              </div>
+            </li>
+        
+        </ul>            
+      </div>
+    </div>  
+    <br>           
+  </script>
+
+  <script id="pesanan_alt1_malamTemplate" type="text/template7">
+    <div class="content-block" style="margin-top:10%;">
+      <div class="list-block">
+        <ul>
+         
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Nama Makanan</div>
+                <div class="item-after">{{nama_makanan}}</div>
+              </div>
+            </li>
+           
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Note</div>
+                <div class="item-after">{{note}}</div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Harga</div>
+                <div class="item-after">Rp {{harga}}</div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Status</div>
+                <div class="item-after"> {{status}}</div>
+              </div>
+            </li>
+   
+        </ul>            
+      </div>
+    </div>  
+    <br>           
+  </script>
+
+  <script id="pesanan_alt2_malamTemplate" type="text/template7">
+    <div class="content-block" style="margin-top:10%;">
+      <div class="list-block">
+        <ul>
+       
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Nama Makanan</div>
+                <div class="item-after">{{nama_makanan}}</div>
+              </div>
+            </li>
+           
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Note</div>
+                <div class="item-after">{{note}}</div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Harga</div>
+                <div class="item-after">Rp {{harga}}</div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Status</div>
+                <div class="item-after"> {{status}}</div>
+              </div>
+            </li>
+      
+        </ul>            
+      </div>
+    </div>  
+    <br>           
+  </script>
+<!-- ============================== END PESANAN ==================  -->
+  <script type="text/template7" id="transaksiTemplate">
+    
+      
+        <ul>
+        {{#each transaksi}}
+          <li class="accordion-item">
+            <a href="#" class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title">Tanggal</div>
+                <div class="item-after">{{waktu}}</div>
+              </div>
+            </a>
+            <div class="accordion-item-content">
+              <div class="content-block">
+                <div class="item-inner">
+                  <div class="item-title">Nama Makanan</div>
+                  <div class="item-after">{{nama_makanan}}</div>
+                </div>
+              </div>
+              <div class="content-block">
+                <div class="item-inner">
+                  <div class="item-title">Jam Makan</div>
+                  <div class="item-after">{{jam_makan}}</div>
+                </div>
+              </div>
+              <div class="content-block">
+                <div class="item-inner">
+                  <div class="item-title">Note</div>
+                  <div class="item-after">{{keterangan}}</div>
+                </div>
+              </div>
+              <div class="content-block">
+                <div class="item-inner">
+                  <div class="item-title">Harga</div>
+                  <div class="item-after">{{harga}}</div>
+                </div>
+              </div>
+            </div>
+          </li>
+            {{/each}}
+        </ul>
+    
+
+  </script>
+
+<script type="text/template7" id="saldoTemplate">
+  <div class="page-content">
+    <div class="content-block-title">
+      <h2> Jumlah Saldo Rp. {{saldo}}</h2> 
+    </div>
+  </div>
+</script>
+<!--- ===================================== KARYAWAN ============================================== -->
+
+
+
+  <!-- = E N D T E M P L A T E 7 = -->
+</head>
+
+<body>
+
+<!-- ==================================== FORM LOGIN ======================================= -->
+
+  <div class="login-screen modal-in" id="a">
+    <div class="view">
+      <div class="page" page-content="login">
+        <div class="page-content login-screen-content">
+          <div class="login-screen-title" style="margin-top: 35%;">
+            <img src="img/nufood.png" style="width:45%;">
+          </div>
+  
+          <form class="login" method="post">
+            <div class="list-block theme-red">
+              <ul>
+                <li class="item-content">
+                  <div class="item-inner">
+                    <div class="item-title label">Username</div>
+                    <div class="item-input">
+                      <input type="text" class="form-control"  id="nama" placeholder="Username">
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content">
+                  <div class="item-inner">
+                    <div class="item-title label">Password</div>
+                      <div class="item-input">
+                        <input type="password" class="form-control" id="password" placeholder=" Password">
+                      </div>
+                    </div>
+                  </li>
+              </ul>
+            </div>
+
+            <div class="list-block theme-red">
+              <div class="row">
+                <div clas="col-auto">
+                </div>
+                <div class="col-auto">
+                  <ul>
+                    <li>
+                      <a href="">
+                     <input type="submit" value="Login" id="login_submit" class="item-link button button-round color-red" style="width:50%; margin-left:27%; margin-right:30%;">
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- ==================================== END FORM LOGIN ======================================== -->
+
+<!-- = K A R Y A W A N = -->
+<!--PANEL NAVBAR-->
+  <div class="statusbar-overlay"></div>
+  <div class="panel-overlay"></div>
+    <div class="panel panel-right panel-reveal">
+      <nav id="menu" class="right show">
+        <ul class='nav'>
+          <script type="text/template7" id="panelTemplate">
+           <li>
+            <span class="username">
+                Hai, {{nama_lengkap}}
+            </span>
+          </li>
+          <!-- <li>
+            <a href="#" class="item-content item-link">
+            <div class="item-inner">
+               <div class="item-title fa fa-money">&nbsp;&nbsp;Saldo : Rp{{saldo}}</div>
+            </div>
+            </a>
+          </li> -->
+          </script>
+          <div id="panel_karyawanTampil"></div>
+          <li>
+            <a href="#index_karyawan" class="panel-close">
+            <div class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title fa fa-home">&nbsp;&nbsp;Beranda</div>
+              </div>
+            </div>
+            </a>
+          </li>
+          <li>
+            <a href="#pesanan" class="panel-close">
+            <div class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title fa fa-star">&nbsp;&nbsp;Pesanan</div>
+              </div>
+            </div>
+            </a>
+          </li>
+          <li>
+            <a href="#" id="transaksiTombol" class="panel-close">
+            <div class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title fa fa-file-o">&nbsp;&nbsp;Transaksi</div>
+              </div>
+            </div>
+            </a>
+          </li>
+          <li>
+            <a href="#" id="saldoTombol" class="panel-close">
+            <div class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title fa fa-money">&nbsp;&nbsp;Saldo</div>
+              </div>
+            </div>
+            </a>
+          </li>
+          <!-- <li>
+            <a href="#ubah_password_karyawan" class="item-content item-link">
+            <div class="item-inner">
+              <div class="item-title fa fa-pencil">&nbsp;&nbsp;Ubah Password</div>
+            </div>
+            </a>
+          </li> -->
+          <li>
+            <a href="#about" class="panel-close">
+            <div class="item-content item-link">
+              <div class="item-inner">
+                <div class="item-title fa fa-info">&nbsp;&nbsp;&nbsp;&nbsp;Tentang</div>
+              </div>
+            </div>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+<!-- ==================================== END PANEL NAVBAR ===================================================== -->
+
+<!--Views-->
+    <div class="views">
+      <div class="view view-main">
+        <!-- Navbar Samping-->
+        <div class="navbar">
+          <!-- ini navbar index-nya-->
+          <div data-page="index_karyawan" class="navbar-inner">
+            <div class="center sliding">
+              <img src="img/nufood.png" alt="Nufood" width="85" height="30">
+            </div>
+            <div class="right">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+          </div>
+
+<!--=============== ini navbar untuk tiap halaman setelah di klik ============================================-->
+
+          <!-- ini navbar untuk tiap halaman setelah di klik-->
+          <div data-page="menu_utama_siang" class="navbar-inner cached">
+            <div class="left sliding"><a href="#index_karyawan" class="link"> <i class="fa fa-chevron-left"></i></a></div>
+            <div class="center sliding ">Menu Utama Siang</div>
+            <div class="right">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+          </div>
+
+          <div data-page="pilih_alternatif_satu_siang" class="navbar-inner cached">
+            <div class="center sliding">Pilih Alternatif 1 Siang</div>
+          </div>
+
+          <div data-page="menu_alternatif_satu_siang" class="navbar-inner cached">
+            <div class="left sliding"><a href="#pilih_alternatif_satu_siang" class="link"> <i class="fa fa-chevron-left"></i></a></div>
+            <div class="center sliding">Menu Alternatif 1 Siang</div>
+            <div class="right">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+          </div>
+
+          <div data-page="pilih_alternatif_dua_siang" class="navbar-inner cached">
+            <div class="center sliding">Pilih Alternatif 2 Siang</div>
+          </div>
+
+          <div data-page="menu_alternatif_dua_siang" class="navbar-inner cached">
+            <div class="left sliding"><a href="#pilih_alternatif_dua_siang" class="link"> <i class="fa fa-chevron-left"></i></a></div>
+            <div class="center sliding">Menu Alternatif 2 Siang</div>
+            <div class="right">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+          </div>
+
+          <div data-page="menu_utama_malam" class="navbar-inner cached">
+            <div class="left sliding"><a href="#index_karyawan" class="link">  <i class="fa fa-chevron-left"></i></a></div>
+            <div class="center sliding">Menu Utama Malam</div>
+            <div class="right">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+          </div>       
+
+          <div data-page="pilih_alternatif_satu_malam" class="navbar-inner cached">
+            <div class="center sliding">Pilih Alternatif 1 Malam</div>
+          </div>
+
+          <div data-page="menu_alternatif_satu_malam" class="navbar-inner cached">
+            <div class="left sliding"><a href="#pilih_alternatif_satu_malam" class="link"> <i class="fa fa-chevron-left"></i></a></div>
+            <div class="center sliding">Menu Alternatif 1 Malam</div>
+            <div class="right">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+          </div>    
+
+          <div data-page="pilih_alternatif_dua_malam" class="navbar-inner cached">
+            <div class="center sliding">Pilih Alternatif 2 Malam</div>
+          </div>
+
+          <div data-page="menu_alternatif_dua_malam" class="navbar-inner cached">
+            <div class="left sliding"><a href="#pilih_alternatif_dua_malam" class="link"> <i class="fa fa-chevron-left"></i></a></div>
+            <div class="center sliding">Menu Alternatif 2 Malam</div>
+            <div class="right">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+          </div>    
+
+          <div data-page="pesanan" class="navbar-inner cached">
+            <div class="left sliding"><a href="#index_karyawan" class="link"> <i class="fa fa-chevron-left"></i></a></div>
+            <div class="center sliding">Daftar Pesanan</div>
+            <div class="right">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+          </div>
+
+          <div data-page="pesanan_utama_siang" class="navbar-inner cached">
+            <div class="left sliding"><a href="#" class="back link"> <i class="fa fa-chevron-left"></i></a></div>
+            <div class="right">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+          </div>
+
+          <div data-page="pesanan_alt1_siang" class="navbar-inner cached">
+            <div class="left sliding"><a href="#" class="back link"> <i class="fa fa-chevron-left"></i></a></div>
+            <div class="right">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+          </div>
+
+          <div data-page="pesanan_alt2_siang" class="navbar-inner cached">
+            <div class="left sliding"><a href="#" class="back link"> <i class="fa fa-chevron-left"></i></a></div>
+            <div class="right">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+          </div>
+
+          <div data-page="pesanan_utama_malam" class="navbar-inner cached">
+            <div class="left sliding"><a href="#" class="back link"> <i class="fa fa-chevron-left"></i></a></div>
+            <div class="right">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+          </div>
+
+          <div data-page="pesanan_alt1_malam" class="navbar-inner cached">
+            <div class="left sliding"><a href="#" class="back link"> <i class="fa fa-chevron-left"></i></a></div>
+            <div class="right">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+          </div>
+
+          <div data-page="pesanan_alt2_malam" class="navbar-inner cached">
+            <div class="left sliding"><a href="#" class="back link"> <i class="fa fa-chevron-left"></i></a></div>
+            <div class="right">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+          </div>
+
+          <div data-page="transaksi" class="navbar-inner cached">
+            <div class="left sliding"><a href="#" id="transaksiTombol" class="back link"> <i class="fa fa-chevron-left"></i></a></div>
+            <div class="center sliding"> Transaksi </div>
+            <div class="right">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+          </div>
+
+          <div data-page="saldo" class="navbar-inner cached">
+            <div class="left sliding"><a href="#" id="saldoTombol" class="back link"> <i class="fa fa-chevron-left"></i></a></div>
+            <div class="center sliding"> Saldo </div>
+            <div class="right">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+          </div>
+
+          <div data-page="hasil_transaksi" class="navbar-inner cached">
+            <div class="left sliding"><a href="#" class="back link"> <i class="fa fa-chevron-left"></i></a></div>
+            <div class="right">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+          </div>
+
+          <!-- <div data-page="ubah_password_karyawan" class="navbar-inner cached">
+            <div class="center"> Ubah Password</div>
+            <div class="right sliding"><a href="#index_karyawan" class="link"><span class="navigation">Simpan</span></a></div>
+          </div> -->
+
+          <div data-page="about" class="navbar-inner cached">
+            <div class="right">
+              <a href="#" class="link icon-only open-panel"> <i class="fa fa-bars"></i></a>
+            </div>
+          </div>
+
+          <div data-page="yakin_siang" class="navbar-inner cached">
+            <div class="right">
+            </div>
+          </div>
+
+          <div data-page="yakin1_siang" class="navbar-inner cached">
+            <div class="right">
+            </div>
+          </div>
+
+          <div data-page="yakin2_siang" class="navbar-inner cached">
+            <div class="right">
+            </div>
+          </div>
+
+          <div data-page="yakin_malam" class="navbar-inner cached">
+            <div class="right">
+            </div>
+          </div>
+
+          <div data-page="yakin1_malam" class="navbar-inner cached">
+            <div class="right">
+            </div>
+          </div>
+
+          <div data-page="yakin2_malam" class="navbar-inner cached">
+            <div class="right">
+            </div>
+          </div>
+        </div>
+<!--========================= end navbar untuk tiap halaman setelah di klik ============================================-->
+
+<!--=============================================== INDEX ======================================================-->
+        <div class="pages navbar-through toolbar-through">
+          <div data-page="index_karyawan" class="page theme-red">
+            <div class="page-content">
+              <div class="row" style="margin-top:30%;">
+                <div class="col-50">
+                  <img class="img-responsive" src="img/cloudyy.png" style="max-width:100%; padding:2%, 2%, 2%, 2%;">
+                </div>
+                <div class="col-50">
+                  <img class="img-responsive" src="img/halfmoon.png" style="max-width:100%; padding:2%, 2%, 2%, 2%;">
+                </div>
+              </div>
+
+              <div class="row" style="margin-top:3%;">
+                <div class="col-50">
+                  <input type="button" id="menu_utama_siangTombol" class="button button-big button-fill button-raised btnPesan item-link" style="width:96%; margin-left:2.5%; margin-right:2.5%;" value="Siang"></input>
+                </div>
+                <div class="col-50">
+                  <input type="button" id="menu_utama_malamTombol" class="button button-big button-fill button-raised btnPesan item-link" style="width:96%; margin-left:2.5%; margin-right:2.5%;" value="Malam"></input>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+<!-- END INDEX -->
+
+<!-- ================================ menu utama siang Page===============-->
+          <div data-page="menu_utama_siang" class="page cached" >
+            <div class="page-content  keep-navbar-on-scroll">
+             <!--  <div class="keep-navbar-on-scroll"> -->
+                <div id="menu_siang_tampil"></div>
+              <!-- </div> -->
+            </div>
+          </div>
+<!--===============================================END MENU UTAMA SIANG ===================================================-->
+
+<!--============================================== PILIH ALTERNATIF SATU SIANG ============================================-->
+          <div data-page="pilih_alternatif_satu_siang" class="page cached">
+            <div class="page-content">
+              <div class="card demo-card-header-pic" style="margin-top:40%;">
+                    <div class="card-content theme-red">
+                      <div class="card-content-inner">
+                        <div class="item-title-row">
+                          <div class="item-title">
+                            <h3><center> Pilih Makanan/Minuman Alternatif 1 <br>
+                            <small>Jika Menu Utama yang Anda Pilih <br>Tidak Tersedia</small></center></h3>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="row" style="margin-top:3%;">
+                          <div class="col-50">
+                            <a href="#" id="menu_alternatif_satu_siangTombol" class="button button-small button-fill item-link" style="width:auto;">YA</a>
+                          </div>
+                          <div class="col-50">
+                            <a href="#yakin_siang" class="button button-small button-fill item-link" style="width:auto;">TIDAK</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+<!--=========================================== END PILIH ALTERNATIF SATU SIANG =================================================-->
+
+<!--==================================================== YAKIN =====================================================================-->
+          <div data-page="yakin_siang" class="page cached">
+            <div class="page-content">
+              <div class="card demo-card-header-pic" style="margin-top:40%;">
+                    <div class="card-content theme-red">
+                      <div class="card-content-inner">
+                        <div class="item-title-row">
+                          <div class="item-title">
+                            <h3><center> Apakah yakin dengan Pesanan Anda ?</center></h3>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="row" style="margin-top:3%;">
+                          <div class="col-50">
+                            <a href="#pesanan" class="button button-small button-fill item-link yakin_1_siang" style="width:auto;">YA</a>
+                          </div>
+                          <div class="col-50">
+                            <a href="#menu_utama_siang" class="button button-small button-fill item-link" style="width:auto;">TIDAK</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+
+<!--================================================== END YAKIN =================================================================-->
+
+<!--============================================ MENU ALTERNATIF SATU SIANG ===================================================-->
+          <div data-page="menu_alternatif_satu_siang" class="page cached">
+            <div class="page-content keep-navbar-on-scroll">
+           <!--  <div class="keep-navbar-on-scroll"> -->
+              <div id="menu_alt1_siang_tampil"></div>
+            <!-- </div> -->
+            </div>
+          </div>
+<!--=========================================== END MENU ALTERNATIF SATU SIANG ==================================================-->
+
+<!--=========================================== PILIH ALTERNATIF DUA SIANG ==================================================-->
+          <div data-page="pilih_alternatif_dua_siang" class="page cached">
+            <div class="page-content">
+              <div data-page="pilih_alternatif_dua_siang" class="page cached">
+
+                <div class="page-content">
+                  <div class="card demo-card-header-pic" style="margin-top:40%;">
+                    <div class="card-content theme-red">
+                      <div class="card-content-inner">
+                        <div class="item-title-row">
+                          <div class="item-title">
+                            <h3><center> Pilih Makanan/Minuman Alternatif 2 <br>
+                            <small>Jika Menu Utama yang Anda Pilih <br>Tidak Tersedia</small></center></h3>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="row" style="margin-top:3%;">
+                          <div class="col-50">
+                            <a href="#" id="menu_alternatif_dua_siangTombol" class="button button-small button-fill item-link" style="width:auto;">YA</a>
+                          </div>
+                          <div class="col-50">
+                            <a href="#yakin1_siang" class="button button-small button-fill item-link" style="width:auto;">TIDAK</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<!--=========================================== END PILIH ALTERNATIF DUA SIANG ================================================-->
+
+<!--==================================================== YAKIN =====================================================================-->
+          <div data-page="yakin1_siang" class="page cached">
+            <div class="page-content">
+              <div class="card demo-card-header-pic" style="margin-top:40%;">
+                    <div class="card-content theme-red">
+                      <div class="card-content-inner">
+                        <div class="item-title-row">
+                          <div class="item-title">
+                            <h3><center> Apakah yakin dengan Pesanan Anda ?</center></h3>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="row" style="margin-top:3%;">
+                          <div class="col-50">
+                            <a href="#pesanan" class="button button-small button-fill item-link yakin_2_siang" style="width:auto;">YA</a>
+                          </div>
+                          <div class="col-50">
+                            <a href="#menu_alternatif_satu_siang" class="button button-small button-fill item-link " style="width:auto;">TIDAK</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+<!-- END YAKIN -->
+
+<!-- MENU ALTERNATIF DUA SIANG -->
+          <div data-page="menu_alternatif_dua_siang" class="page cached">
+            <div class="page-content keep-navbar-on-scroll">
+              <!-- <div class="keep-navbar-on-scroll"> -->
+              <div id="menu_alt2_siang_tampil"></div>
+              <!-- </div> -->
+            </div>
+          </div>
+<!-- END MENU ALTERNATIF DUA SIANG -->
+
+<!-- YAKIN -->
+          <div data-page="yakin2_siang" class="page cached">
+            <div class="page-content">
+              <div class="card demo-card-header-pic" style="margin-top:40%;">
+                    <div class="card-content theme-red">
+                      <div class="card-content-inner">
+                        <div class="item-title-row">
+                          <div class="item-title">
+                            <h3><center> Apakah yakin dengan Pesanan Anda ?</center></h3>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="row" style="margin-top:3%;">
+                          <div class="col-50">
+                            <a href="#pesanan" class="button button-small button-fill item-link yakin_3_siang" style="width:auto;">YA</a>
+                          </div>
+                          <div class="col-50">
+                            <a href="#menu_alternatif_dua_siang" class="button button-small button-fill item-link" style="width:auto;">TIDAK</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+<!-- END YAKIN -->
+
+
+<!--========================================== BAGIAN KARYAWAN MALAM ==========================================-->
+
+
+<!-- MENU UTAMA MALAM -->
+          <div data-page="menu_utama_malam" class="page cached">
+            <div class="page-content keep-navbar-on-scroll">
+              <!-- <div class="keep-navbar-on-scroll"> -->
+                <div id="menu_utama_malam_tampil"></div>
+              <!-- </div> -->
+            </div>
+          </div>
+<!-- END MENU UTAMA MALAM -->
+
+<!-- PILIH ALTERNATIF SATU MALAM -->
+          <div data-page="pilih_alternatif_satu_malam" class="page cached">
+            <div class="page-content">
+              <div class="card demo-card-header-pic" style="margin-top:40%;">
+                    <div class="card-content theme-red">
+                      <div class="card-content-inner">
+                        <div class="item-title-row">
+                          <div class="item-title">
+                            <h3><center> Pilih Makanan/Minuman Alternatif 1 <br>
+                            <small>Jika Menu Utama yang Anda Pilih <br>Tidak Tersedia</small></center></h3>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="row" style="margin-top:3%;">
+                          <div class="col-50">
+                            <a href="#" id="menu_alternatif_satu_malamTombol" class="button button-small button-fill item-link " style="width:auto;">YA</a>
+                          </div>
+                          <div class="col-50">
+                            <a href="#yakin_malam" class="button button-small button-fill item-link" style="width:auto;">TIDAK</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+<!-- END PILIH ALTERNATIF MALAM -->
+
+<!-- YAKIN -->
+          <div data-page="yakin_malam" class="page cached">
+            <div class="page-content">
+              <div class="card demo-card-header-pic" style="margin-top:40%;">
+                    <div class="card-content theme-red">
+                      <div class="card-content-inner">
+                        <div class="item-title-row">
+                          <div class="item-title">
+                            <h3><center> Apakah yakin dengan Pesanan Anda ?</center></h3>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="row" style="margin-top:3%;">
+                          <div class="col-50">
+                            <a href="#pesanan" class="button button-small button-fill item-link yakin_1_malam" style="width:auto;">YA</a>
+                          </div>
+                          <div class="col-50">
+                            <a href="#menu_utama_malam" class="button button-small button-fill item-link" style="width:auto;">TIDAK</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+<!-- END YAKIN -->
+
+
+<!-- MENU ALTERNATIF SATU MALAM -->
+         <div data-page="menu_alternatif_satu_malam" class="page cached">
+            <div class="page-content keep-navbar-on-scroll">
+              <!-- <div class="keep-navbar-on-scroll"> -->
+                <div id="menu_alt1_malam_tampil"></div>
+              <!-- </div> -->
+            </div>
+          </div>
+<!-- END MENU ALTERNATIF SATU MALAM -->
+
+<!-- PILIH ALTERNATIF DUA MALAM -->
+          <div data-page="pilih_alternatif_dua_malam" class="page cached">
+            <div class="page-content">
+              <div data-page="pilih_alternatif_dua_malam" class="page cached">
+                <div class="page-content">
+                  <div class="card demo-card-header-pic" style="margin-top:40%;">
+                    <div class="card-content theme-red">
+                      <div class="card-content-inner">
+                        <div class="item-title-row">
+                          <div class="item-title">
+                            <h3><center> Pilih Makanan/Minuman Alternatif 2 <br>
+                            <small>Jika Menu Utama yang Anda Pilih <br>Tidak Tersedia</small></center></h3>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="row" style="margin-top:3%;">
+                          <div class="col-50">
+                            <a href="#" id="menu_alternatif_dua_malamTombol" class="button button-small button-fill item-link" style="width:auto;">YA</a>
+                          </div>
+                          <div class="col-50">
+                            <a href="#yakin1_malam" class="button button-small button-fill item-link" style="width:auto;">TIDAK</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<!-- END PILIH ALTERNATIF DUA MALAM -->
+
+<!-- YAKIN -->
+          <div data-page="yakin1_malam" class="page cached">
+            <div class="page-content">
+              <div class="card demo-card-header-pic" style="margin-top:40%;">
+                    <div class="card-content theme-red">
+                      <div class="card-content-inner">
+                        <div class="item-title-row">
+                          <div class="item-title">
+                            <h3><center> Apakah yakin dengan Pesanan Anda ?</center></h3>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="row" style="margin-top:3%;">
+                          <div class="col-50">
+                            <a href="#pesanan" class="button button-small button-fill item-link yakin_2_malam" style="width:auto;">YA</a>
+                          </div>
+                          <div class="col-50">
+                            <a href="#menu_alternatif_satu_malam" id="menu_alternatif_satu_malamTombol" class="button button-small button-fill item-link" style="width:auto;">TIDAK</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+<!-- END YAKIN -->
+
+<!-- MENU ALTERNATIF DUA MALAM -->
+         <div data-page="menu_alternatif_dua_malam" class="page cached">
+            <div class="page-content keep-navbar-on-scroll">
+              <!-- <div class="keep-navbar-on-scroll"> -->
+                <div id="menu_alt2_malam_tampil"></div>
+              <!-- </div> -->
+            </div>
+          </div>
+<!-- END MENU ALTERNATIF DUA MALAM -->
+
+<!-- YAKIN -->
+          <div data-page="yakin2_malam" class="page cached">
+            <div class="page-content">
+              <div class="card demo-card-header-pic" style="margin-top:40%;">
+                    <div class="card-content theme-red">
+                      <div class="card-content-inner">
+                        <div class="item-title-row">
+                          <div class="item-title">
+                            <h3><center> Apakah yakin dengan Pesanan Anda ?</center></h3>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="row" style="margin-top:3%;">
+                          <div class="col-50">
+                            <a href="#pesanan" class="button button-small button-fill item-link yakin_3_malam" style="width:auto;">YA</a>
+                          </div>
+                          <div class="col-50">
+                            <a href="#menu_alternatif_dua_malam" id="menu_alternatif_dua_malamTombol" class="button button-small button-fill item-link" style="width:auto;">TIDAK</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+<!-- END YAKIN =-->
+
+<!-- PESANAN -->
+          <div data-page="pesanan" class="page cached">
+             <div class="page-content">
+                <div class="list-block accordion-list" style="margin-top:10%;">
+                  <ul>
+                    <li class="accordion-item">
+                      <a href="#" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Siang</div>
+                      </div>
+                      </a>
+                      <div class="accordion-item-content">
+                        <div class="content-block">
+                          <a href="#" id="pesanan_utama_siangTombol" class="item-content item-link">
+                          <div class="item-inner">
+                            <div class="item-title">Utama</div>
+                          </div>
+                          </a>
+                        </div>
+                        <div class="content-block">
+                          <a href="#" id="pesanan_alt1_siangTombol" class="item-content item-link">
+                          <div class="item-inner">
+                            <div class="item-title">Alternatif 1</div>
+                          </div>
+                          </a>
+                        </div>
+                        <div class="content-block">
+                          <a href="#" id="pesanan_alt2_siangTombol" class="item-content item-link">
+                          <div class="item-inner">
+                            <div class="item-title">Alternatif 2</div>
+                          </div>
+                          </a>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="accordion-item">
+                      <a href="#" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Malam</div>
+                      </div>
+                      </a>
+                      <div class="accordion-item-content">
+                        <div class="content-block">
+                          <a href="#" id="pesanan_utama_malamTombol" class="item-content item-link">
+                          <div class="item-inner">
+                            <div class="item-title">Utama</div>
+                          </div>
+                          </a>
+                        </div>
+                        <div class="content-block">
+                          <a href="#"  id="pesanan_alt1_malamTombol" class="item-content item-link">
+                          <div class="item-inner">
+                            <div class="item-title">Alternatif 1</div>
+                          </div>
+                          </a>
+                        </div>
+                        <div class="content-block">
+                          <a href="#" id="pesanan_alt2_malamTombol" class="item-content item-link">
+                          <div class="item-inner">
+                            <div class="item-title">Alternatif 2</div>
+                          </div>
+                          </a>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>              
+                </div> 
+            </div>
+          </div>
+<!-- PESANAN -->
+
+<!-- PESANAN UTAMA SIANG -->
+          <div data-page="pesanan_utama_siang" class="page cached" >
+              <div class="page-content">
+                <div class="content-block-title" style="margin-top:5%;">
+                  <h2><center>Makanan Utama <br>
+                  <small>yang Telah Anda Pesan</small></center></h2>
+                </div> <br>
+                  <div id="pesanan_siang_utamaTampil"></div>
+              </div>    
+          </div> 
+<!-- END PESANAN UTAMA SIANG -->
+
+<!-- PESANAN ALTERNATIF SATU SIANG -->
+          <div data-page="pesanan_alt1_siang" class="page cached" >
+            <div class="page-content">
+              <div class="content-block-title" style="margin-top:5%;">
+                <h2><center>Makanan Alternatif 1 <br>
+                <small>yang Telah Anda Pesan</small></center></h2>
+              </div>
+              <br>
+                 <div id="pesanan_siang_alt1Tampil"></div>
+            </div>
+          </div>
+<!-- END PESANAN ALTERNATIF SATU  SIANG -->
+
+<!-- PESANAN ALTERNATIF DUA SIANG -->
+          <div data-page="pesanan_alt2_siang" class="page cached" >
+            <div class="page-content">
+              <div class="content-block-title" style="margin-top:5%;">
+                <h2><center>Makanan Alternatif 2<br>
+                <small>yang Telah Anda Pesan</small></center></h2>
+              </div>
+              <br>
+                   <div id="pesanan_siang_alt2Tampil"></div>      
+            </div>
+          </div>
+<!-- END PESANAN ALTERNATIF DUA SIANG -->
+
+<!-- PESANAN UTAMA MALAM -->
+          <div data-page="pesanan_utama_malam" class="page cached" >
+            <div class="page-content">
+              <div class="content-block-title" style="margin-top:5%;">
+                <h2><center>Makanan Utama <br>
+                <small>yang Telah Anda Pesan</small></center></h2>
+              </div>
+              <br>
+                  <div id="pesanan_malam_utamaTampil"></div>   
+            </div>     
+          </div>
+<!-- END PESANAN UTAMA MALAM -->
+
+<!-- PESANAN ALTERNATIF SATU MALAM -->
+          <div data-page="pesanan_alt1_malam" class="page cached" >
+            <div class="page-content">
+              <div class="content-block-title" style="margin-top:5%;">
+                <h2><center>Makanan Alternatif 1 <br>
+                <small>yang Telah Anda Pesan</small></center></h2>
+              </div>
+              <br>
+                 <div id="pesanan_malam_alt1Tampil"></div>   
+            </div>   
+          </div>
+<!-- END PESANAN ALTERNATIF SATU  SIANG -->
+
+<!-- PESANAN ALTERNATIF DUA SIANG -->
+          <div data-page="pesanan_alt2_malam" class="page cached" >
+            <div class="page-content">
+              <div class="content-block-title" style="margin-top:5%;">
+                <h2><center>Makanan Alternatif 2 <br>
+                <small>yang Telah Anda Pesan</small></center></h2>
+              </div>
+              <br>
+               <div id="pesanan_malam_alt2Tampil"></div>   
+            </div>       
+          </div>
+<!-- END PESANAN ALTERNATIF DUA MALAM -->
+
+<!-- TRANSAKSI -->
+          <div data-page="transaksi" class="page cached" >
+            <div class="page-content">
+              <div class="page-content">
+                  <div class="list-block accordion-list" style="margin-top:10%;">
+                    <div id="transaksiTampil"></div>
+                  </div>
+               </div>  
+            </div>
+          </div>
+<!-- END TRANSAKSI -->
+
+<!-- SALDO -->
+          <div data-page="saldo" class="page cached" >
+            <div class="page-content">
+              <div class="page-content">
+                  <div class="list-block accordion-list" style="margin-top:10%;">
+                    <div id="saldoTampil"></div>
+                  </div>
+               </div>  
+            </div>
+          </div>
+<!-- END SALDO -->
+
+
+<!-- UBAH PASSWORD -->
+      <!--     <div data-page="ubah_password_karyawan" class="page cached">
+            <div class="page-content">
+                <div class="list-block">
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">Password Lama</div>
+                                        <div class="item-input">
+                                        <input type="text" placeholder="Password Lama">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                </div>
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Password Baru</div>
+                                        <div class="item-input">
+                                            <input type="password" placeholder="Password Baru">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                <div class="personal-info">
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Ulangi Password</div>
+                                        <div class="item-input">
+                                            <input type="password" placeholder="Ulangi Password">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+              </div>
+            </div> -->
+<!-- END UBAH PASSWORD -->
+
+<!-- TENTANG -->
+            <div data-page="about" class="page cached">
+                <div class="page-content">
+                            
+                            <div class="content-block-title">
+                                <h2>NuFood</h2>
+                            </div>
+                            <div class="content-block">
+                                <p>NuFOOD adalah aplikasi berbasis web yang memungkinkan para pegawai PT Tiga Visi Kaya Warna memesan makanan dengan mudah, cepat dan praktis. <br>
+                                Aplikasi ini dapat memudahkan office boy untuk melihat pesanan makanan dari pegawai.</p>
+                            </div>
+                </div>
+            </div>
+<!-- END TENTANG -->
+        </div>
+
+      </div> <!-- END VIEW MAIN -->
+    </div><!-- END VIEW -->
+
+<!-- = O B = -->
+
+<!-- = S C R I P T = -->
+    <script type="text/javascript">
+            window.onerror = function(message, url, lineNumber) {
+                alert("Error: "+message+" in "+url+" at line "+lineNumber);
+            }
+        </script>  
+    <script src="cordova.js"></script>
+    <script>
+      var isCordovaApp = !!window.cordova;
+    </script>
+    <script src="js/jquery.js"></script>
+    <script src="js/template7.min.js"></script>
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <script type="text/javascript" src="js/taffy.min.js"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
+    <script type="text/javascript" src="js/custom.js"> </script>
+</body>
+</html>
